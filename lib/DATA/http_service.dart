@@ -37,7 +37,7 @@ class HttpService {
     return get('http://amlht.com/api/Vehicles');
   }
 
-  Future getCarRecords() {
-    return get('http://amlht.com/vget/100073');
+  Future getCarRecords(String vehCode) {
+    return get('http://amlht.com/api/vget/$vehCode');
   }
 }
