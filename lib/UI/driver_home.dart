@@ -21,11 +21,6 @@ class _DriverHomeState extends State<DriverHome>
 
   @override
   void initState() {
-    // HttpService web = HttpService();
-    // Future<Response> res = web.getRequest('http://amlht.com/api/Vehicles');
-    // String data = res.toString();
-    // print(data);
-
     _getcars();
     _tabController = TabController(
       initialIndex: 0,
@@ -59,6 +54,7 @@ class _DriverHomeState extends State<DriverHome>
 
   HttpService _http = HttpService();
   var _cars = [];
+  bool loading = true;
 
   Future _getcars() async {
     Response response;
@@ -66,6 +62,7 @@ class _DriverHomeState extends State<DriverHome>
       response = await _http.getAllCars();
       if (response.statusCode == 200) {
         setState(() {
+          loading = false;
           for (int i = 0; i < response.data.length; ++i) {
             _cars.add(Car.fromJson(response.data[i]));
           }
@@ -81,7 +78,8 @@ class _DriverHomeState extends State<DriverHome>
 
   @override
   Widget build(BuildContext context) {
-    print('in driver_home State, _cars.length = ${_cars.length}\n');
+    //load
+    if (loading) return Scaffold(body: const CircularProgressIndicator());
     return Scaffold(
         appBar: AppBar(
           title: Text('Driver\'s Home'),
