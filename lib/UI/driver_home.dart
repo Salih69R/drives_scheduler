@@ -65,16 +65,8 @@ class _DriverHomeState extends State<DriverHome>
     try {
       response = await _http.getAllCars();
       if (response.statusCode == 200) {
-        print('\n\n');
-
-        print('succeful get response : ${response}\n');
-        print('response.data : ${response.data}\n');
-        print('response.data[0] : ${response.data[0]}\n');
-        print('\n\n');
         setState(() {
-          print('we have ${response.data.length} cars:\n');
           for (int i = 0; i < response.data.length; ++i) {
-            print('response.data[$i] = ${response.data[i]}');
             _cars.add(Car.fromJson(response.data[i]));
           }
         });

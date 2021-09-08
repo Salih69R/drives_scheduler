@@ -1,6 +1,3 @@
-import 'dart:html';
-
-import 'package:dio/dio.dart';
 import 'package:drives_scheduler/DATA/Model/car.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:flutter/cupertino.dart';
