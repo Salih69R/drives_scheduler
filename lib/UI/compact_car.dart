@@ -22,14 +22,13 @@ class CompactCar extends StatelessWidget {
       trailing: Text('VStatus: ${car.VStatus}'),
       onTap: () {
         //TODO: open detailed Car screen
-        http.getCarRecords(car.VehCode);
 
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //       builder: (context) =>
-        //           DetailedCar(http: http, vehCode: car.VehCode)),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  DetailedCar(http: http, vehCode: car.VehCode)),
+        );
       },
     );
   }
