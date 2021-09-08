@@ -79,7 +79,8 @@ class _DriverHomeState extends State<DriverHome>
   @override
   Widget build(BuildContext context) {
     //load
-    if (loading) return Scaffold(body: const CircularProgressIndicator());
+    if (loading)
+      return Scaffold(body: const Center(child: CircularProgressIndicator()));
     return Scaffold(
         appBar: AppBar(
           title: Text('Driver\'s Home'),

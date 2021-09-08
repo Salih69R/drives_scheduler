@@ -51,6 +51,8 @@ class _DetailedCarState extends State<DetailedCar> {
   @override
   Widget build(BuildContext context) {
     //load
+    if (loading)
+      return Scaffold(body: const Center(child: CircularProgressIndicator()));
     return Center();
   }
 }
