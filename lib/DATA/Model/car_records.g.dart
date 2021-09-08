@@ -8,8 +8,8 @@ part of 'car_records.dart';
 
 CarRecords _$CarRecordsFromJson(Map<String, dynamic> json) {
   return CarRecords(
-    car: Car.fromJson(json['car'] as Map<String, dynamic>),
-    records: json['records'],
+    car: Car.fromJson(json['mVehicle'] as Map<String, dynamic>),
+    records: json['mLVehDocs'],
   );
 }
 

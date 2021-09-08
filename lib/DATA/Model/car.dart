@@ -6,36 +6,36 @@ part 'car.g.dart';
 class Car {
   @JsonKey(name: 'Id')
   int Id;
-  @JsonKey(name: 'ActivatDate')
-  String ActivatDate;
-  @JsonKey(name: 'AdminDate')
-  String AdminDate;
-  @JsonKey(name: 'BrakesDate')
-  String BrakesDate;
   @JsonKey(name: 'VehCode')
   String VehCode;
   @JsonKey(name: 'VehNumber')
   String VehNumber;
+  @JsonKey(name: 'ActivatDate')
+  String? ActivatDate;
+  @JsonKey(name: 'AdminDate')
+  String? AdminDate;
+  @JsonKey(name: 'BrakesDate')
+  String? BrakesDate;
   @JsonKey(name: 'VLockCode')
-  String VLockCode;
+  String? VLockCode;
   @JsonKey(name: 'Kilometer')
-  String Kilometer;
+  String? Kilometer;
   @JsonKey(name: 'Treatment')
-  String Treatment;
+  String? Treatment;
   @JsonKey(name: 'VKiloMtr')
-  String VKiloMtr;
+  String? VKiloMtr;
   @JsonKey(name: 'KilmtrTimng')
-  String KilmtrTimng;
+  String? KilmtrTimng;
   @JsonKey(name: 'VTestDate')
-  String VTestDate;
+  String? VTestDate;
   @JsonKey(name: 'VInsuDate')
-  String VInsuDate;
+  String? VInsuDate;
   @JsonKey(name: 'VStatus')
-  String VStatus;
+  String? VStatus;
   @JsonKey(name: 'DrvCode')
-  String DrvCode;
+  String? DrvCode;
   @JsonKey(name: 'WinterDate')
-  String WinterDate;
+  String? WinterDate;
 
   Car(
       {required this.ActivatDate,

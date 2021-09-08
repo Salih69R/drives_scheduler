@@ -8,22 +8,22 @@ part of 'car.dart';
 
 Car _$CarFromJson(Map<String, dynamic> json) {
   return Car(
-    ActivatDate: json['ActivatDate'] as String,
-    AdminDate: json['AdminDate'] as String,
-    BrakesDate: json['BrakesDate'] as String,
-    DrvCode: json['DrvCode'] as String,
     Id: json['Id'] as int,
-    KilmtrTimng: json['KilmtrTimng'] as String,
-    Kilometer: json['Kilometer'] as String,
-    Treatment: json['Treatment'] as String,
-    VInsuDate: json['VInsuDate'] as String,
-    VKiloMtr: json['VKiloMtr'] as String,
-    VLockCode: json['VLockCode'] as String,
-    VStatus: json['VStatus'] as String,
-    VTestDate: json['VTestDate'] as String,
     VehCode: json['VehCode'] as String,
     VehNumber: json['VehNumber'] as String,
-    WinterDate: json['WinterDate'] as String,
+    ActivatDate: json['ActivatDate'] as String?,
+    AdminDate: json['AdminDate'] as String?,
+    BrakesDate: json['BrakesDate'] as String?,
+    DrvCode: json['DrvCode'] as String?,
+    KilmtrTimng: json['KilmtrTimng'] as String?,
+    Kilometer: json['Kilometer'] as String?,
+    Treatment: json['Treatment'] as String?,
+    VInsuDate: json['VInsuDate'] as String?,
+    VKiloMtr: json['VKiloMtr'] as String?,
+    VLockCode: json['VLockCode'] as String?,
+    VStatus: json['VStatus'] as String?,
+    VTestDate: json['VTestDate'] as String?,
+    WinterDate: json['WinterDate'] as String?,
   );
 }
 

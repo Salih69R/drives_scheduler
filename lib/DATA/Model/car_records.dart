@@ -6,11 +6,11 @@ part 'car_records.g.dart';
 
 @JsonSerializable()
 class CarRecords {
-  @JsonKey(name: 'Vehicle')
+  @JsonKey(name: 'mVehicle')
   Car car;
 
   @JsonKey(name: 'mLVehDocs')
-  List<CarDoc> records;
+  List<dynamic> records;
 
   CarRecords({
     required this.car,
