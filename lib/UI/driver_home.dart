@@ -130,7 +130,10 @@ class _DriverHomeState extends State<DriverHome>
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
                     for (int i = 0; i < _cars.length; ++i)
-                      CompactCar(car: _cars[i]),
+                      CompactCar(
+                        car: _cars[i],
+                        http: _http,
+                      ),
                   ],
                 ),
               ),

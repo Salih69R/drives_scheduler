@@ -1,29 +1,31 @@
+import 'dart:html';
+
 import 'package:dio/dio.dart';
 import 'package:drives_scheduler/DATA/Model/car.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CompactCar extends StatefulWidget {
+class CompactCar extends StatelessWidget {
+  CompactCar({Key? key, required this.car, required this.http})
+      : super(key: key);
   final Car car;
-  CompactCar({required this.car, Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => _CompactCarState(car);
-}
-
-class _CompactCarState extends State<CompactCar> {
-  _CompactCarState(this._car);
-
-  final Car _car;
+  final HttpService http;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: ExcludeSemantics(
-          child: CircleAvatar(child: Text('Id: ${_car.Id}')),
-        ),
-        title: Text('VStatus: ${_car.VStatus}'),
-        subtitle: Text('DrvCode: ${_car.DrvCode}'));
+      leading: ExcludeSemantics(
+        child: CircleAvatar(child: Text('Id: ${car.Id}')),
+      ),
+      title: Text('ActivatDate: ${car.ActivatDate}'),
+      subtitle: Text('DrvCode: ${car.DrvCode}'),
+      isThreeLine: true,
+      trailing: Text('VStatus: ${car.VStatus}'),
+      onTap: () {
+        //TODO: open detailed Car screen
+        http.getCarRecords(car.VehCode);
+      },
+    );
   }
 }
