@@ -11,7 +11,6 @@ Car _$CarFromJson(Map<String, dynamic> json) {
     ActivatDate: json['ActivatDate'] as String,
     AdminDate: json['AdminDate'] as String,
     BrakesDate: json['BrakesDate'] as String,
-    Deleted: json['Deleted'] as String,
     DrvCode: json['DrvCode'] as String,
     Id: json['Id'] as int,
     KilmtrTimng: json['KilmtrTimng'] as String,
@@ -43,7 +42,6 @@ Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
       'VTestDate': instance.VTestDate,
       'VInsuDate': instance.VInsuDate,
       'VStatus': instance.VStatus,
-      'Deleted': instance.Deleted,
       'DrvCode': instance.DrvCode,
       'WinterDate': instance.WinterDate,
     };

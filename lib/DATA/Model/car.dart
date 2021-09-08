@@ -1,5 +1,4 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/builder.dart';
 
 part 'car.g.dart';
 
@@ -33,8 +32,6 @@ class Car {
   String VInsuDate;
   @JsonKey(name: 'VStatus')
   String VStatus;
-  @JsonKey(name: 'Deleted')
-  String Deleted;
   @JsonKey(name: 'DrvCode')
   String DrvCode;
   @JsonKey(name: 'WinterDate')
@@ -44,7 +41,6 @@ class Car {
       {required this.ActivatDate,
       required this.AdminDate,
       required this.BrakesDate,
-      required this.Deleted,
       required this.DrvCode,
       required this.Id,
       required this.KilmtrTimng,
