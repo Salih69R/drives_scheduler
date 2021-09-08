@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:drives_scheduler/DATA/Model/car.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:drives_scheduler/UI/compact_car.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class DriverHome extends StatefulWidget {
@@ -104,14 +103,14 @@ class _DriverHomeState extends State<DriverHome>
                   restorationId: 'drives_list_view',
                   padding: const EdgeInsets.symmetric(vertical: 8),
                   children: [
-                    for (int index = 1; index < 21; index++)
-                      ListTile(
-                          leading: ExcludeSemantics(
-                            child: CircleAvatar(child: Text('Drive $index')),
-                          ),
-                          title: Text('some name of a drive number $index'),
-                          subtitle:
-                              Text('some secandry info about this drive')),
+                    // for (int index = 1; index < 21; index++)
+                    //   ListTile(
+                    //       leading: ExcludeSemantics(
+                    //         child: CircleAvatar(child: Text('Drive $index')),
+                    //       ),
+                    //       title: Text('some name of a drive number $index'),
+                    //       subtitle:
+                    //           Text('some secandry info about this drive')),
                   ],
                 ),
               )),

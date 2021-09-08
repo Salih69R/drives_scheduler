@@ -1,6 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:drives_scheduler/DATA/Model/car.dart';
-import 'package:drives_scheduler/DATA/Model/car_doc.dart';
 import 'package:drives_scheduler/DATA/Model/car_records.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,7 +16,7 @@ class DetailedCar extends StatefulWidget {
 
 class _DetailedCarState extends State<DetailedCar> {
   late CarRecords _carRecords;
-  final HttpService _http;
+  HttpService _http;
   final String vehCode;
   bool loading = true;
 

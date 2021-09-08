@@ -18,7 +18,7 @@ class HttpService {
   // }
 
   //not working for web, only android and should work on ios
-//TODO: add alternative for web (or fix Drio options to work for web)
+//TODO: add alternative for web (or fix Dio options to work for web)
   Future<Response?> get(String url) async {
     Response response = Response(
         requestOptions: RequestOptions(

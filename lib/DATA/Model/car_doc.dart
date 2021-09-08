@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:json_serializable/builder.dart';
+// import 'package:json_serializable/builder.dart';
 
 part 'car_doc.g.dart';
 
