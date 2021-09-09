@@ -14,15 +14,21 @@ class CompactCar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       leading: ExcludeSemantics(
-        child: CircleAvatar(child: Text('car number: ${car.VehNumber}')),
+        child: CircleAvatar(
+            backgroundColor: Colors.blueGrey,
+            foregroundColor:
+                car.VStatus == 'פעיל' ? Colors.lightGreen : Colors.red,
+            child: Center(
+                child: Title(
+                    color: Colors.black,
+                    title: 'VStatus ${car.VStatus}',
+                    child: Text('${car.VStatus}')))),
       ),
       title: Text('VTestDate: ${car.VTestDate}'),
       subtitle: Text('VInsuDate: ${car.VInsuDate}'),
       isThreeLine: true,
-      trailing: Text('VStatus: ${car.VStatus}'),
+      trailing: Text('VStatus: ${car.VehNumber}'),
       onTap: () {
-        //TODO: open detailed Car screen
-
         Navigator.push(
           context,
           MaterialPageRoute(
