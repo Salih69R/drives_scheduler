@@ -24,10 +24,10 @@ class CompactCar extends StatelessWidget {
                     title: 'VStatus ${car.VStatus}',
                     child: Text('${car.VStatus}')))),
       ),
-      title: Text('VTestDate: ${car.VTestDate}'),
-      subtitle: Text('VInsuDate: ${car.VInsuDate}'),
-      isThreeLine: true,
-      trailing: Text('VStatus: ${car.VehNumber}'),
+      title: Text('Test Date: ${car.VTestDate}'),
+      subtitle: Text('Insurance Date: ${car.VInsuDate}'),
+      isThreeLine: false,
+      trailing: Text('${car.VehNumber}'),
       onTap: () {
         Navigator.push(
           context,
