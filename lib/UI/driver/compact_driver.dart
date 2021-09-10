@@ -11,7 +11,7 @@ class CompactDriver extends StatelessWidget {
   Widget build(BuildContext context) {
     Color color_by_date =
         isDateFarEnough(driver.LincExpDt) ? Colors.transparent : Colors.red;
-    Widget subtitle_by_date = !isDateFarEnough(driver.LincExpDt)
+    Widget subtitle_by_date = isDateFarEnough(driver.LincExpDt)
         ? Center()
         : Text('WARNING! your license is about or already EXPIRED!');
 
