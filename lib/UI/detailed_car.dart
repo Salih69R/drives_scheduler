@@ -67,21 +67,25 @@ class _DetailedCarState extends State<DetailedCar>
         title: Text('${_carRecords.car.VehNumber}'),
         automaticallyImplyLeading: false,
       ),
-      bottomNavigationBar: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          TabBar(
-            labelColor: Colors.black,
-            controller: _tabController,
-            isScrollable: true,
-            tabs: [
-              Expanded(child: Tab(text: 'Vehicle details')),
-              Expanded(child: Tab(text: 'Documents and Records')),
+      bottomNavigationBar: Container(
+          color: Colors.blue[400],
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              TabBar(
+                labelColor: Colors.white,
+                indicatorColor: Colors.white,
+                unselectedLabelColor: Colors.white54,
+                controller: _tabController,
+                isScrollable: true,
+                tabs: [
+                  Expanded(child: Tab(text: 'Vehicle details')),
+                  Expanded(child: Tab(text: 'Documents and Records')),
+                ],
+              ),
             ],
-          ),
-        ],
-      ),
+          )),
       body: Center(
         child: TabBarView(
           controller: _tabController,

@@ -85,6 +85,9 @@ class _DriverHomeState extends State<DriverHome>
           title: Center(child: Text('Driver\'s Home')),
           automaticallyImplyLeading: false,
           bottom: TabBar(
+            labelColor: Colors.white,
+            indicatorColor: Colors.white,
+            unselectedLabelColor: Colors.white54,
             controller: _tabController,
             isScrollable: true,
             tabs: [
