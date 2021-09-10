@@ -108,7 +108,7 @@ class _HomeState extends State<Home>
 
     return Scaffold(
         appBar: AppBar(
-          title: Center(child: Text('Driver\'s Home')),
+          title: Center(child: Text('Home')),
           automaticallyImplyLeading: false,
           bottom: TabBar(
             labelColor: Colors.white,
