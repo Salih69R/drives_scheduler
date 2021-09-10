@@ -1,4 +1,5 @@
 import 'package:drives_scheduler/DATA/Model/car.dart';
+import 'package:drives_scheduler/DATA/date_validation.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,30 +13,40 @@ class CompactCar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: ExcludeSemantics(
-        child: CircleAvatar(
-            backgroundColor: Colors.blueGrey,
-            foregroundColor:
-                car.VStatus == 'פעיל' ? Colors.lightGreen : Colors.red,
-            child: Center(
-                child: Title(
-                    color: Colors.black,
-                    title: 'VStatus ${car.VStatus}',
-                    child: Text('${car.VStatus}')))),
+    Color color_by_date =
+        isCarDatesValid(car) ? Colors.transparent : Colors.red;
+    Widget subtitle_by_date = isCarDatesValid(car)
+        ? Center()
+        : Text('some date will expire in less than a month!');
+
+    return SafeArea(
+        child: Padding(
+      padding: EdgeInsets.all(4),
+      child: ListTile(
+        tileColor: color_by_date,
+        leading: ExcludeSemantics(
+          child: CircleAvatar(
+            backgroundColor: Colors.blue,
+            foregroundColor: Colors.black,
+            child: Icon(
+              Icons.directions_car_filled_rounded,
+              size: 35,
+              semanticLabel: 'Car Icon',
+            ),
+          ),
+        ),
+        title: Text('${car.VehNumber}'),
+        subtitle: subtitle_by_date,
+        isThreeLine: false,
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    DetailedCar(http: http, vehCode: car.VehCode)),
+          );
+        },
       ),
-      title: Text('Test Date: ${car.VTestDate}'),
-      subtitle: Text('Insurance Date: ${car.VInsuDate}'),
-      isThreeLine: false,
-      trailing: Text('${car.VehNumber}'),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  DetailedCar(http: http, vehCode: car.VehCode)),
-        );
-      },
-    );
+    ));
   }
 }

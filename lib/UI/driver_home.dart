@@ -82,7 +82,7 @@ class _DriverHomeState extends State<DriverHome>
       return Scaffold(body: const Center(child: CircularProgressIndicator()));
     return Scaffold(
         appBar: AppBar(
-          title: Text('Driver\'s Home'),
+          title: Center(child: Text('Driver\'s Home')),
           automaticallyImplyLeading: false,
           bottom: TabBar(
             controller: _tabController,
