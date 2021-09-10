@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:drives_scheduler/DATA/Model/Car/car.dart';
-import 'package:drives_scheduler/DATA/http_service.dart';
-import 'package:drives_scheduler/UI/compact_car.dart';
+import 'package:drives_scheduler/UI/driver/compact_driver.dart';
+import 'package:drives_scheduler/data/model/car/car.dart';
+import 'package:drives_scheduler/data/model/driver.dart';
+import 'package:drives_scheduler/data/http_service.dart';
+import 'package:drives_scheduler/UI/car/compact_car.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -20,7 +22,8 @@ class _HomeState extends State<Home>
 
   @override
   void initState() {
-    _getcars();
+    _getDrivers();
+    _getCars();
     _tabController = TabController(
       initialIndex: 0,
       length: 2,
@@ -53,15 +56,38 @@ class _HomeState extends State<Home>
 
   HttpService _http = HttpService();
   var _cars = [];
-  bool loading = true;
+  var _drivers = [];
+  bool loading_cars = true;
+  bool loading_drivers = true;
 
-  Future _getcars() async {
+  Future _getDrivers() async {
+    Response response;
+    try {
+      response = await _http.getAllDrivers();
+      if (response.statusCode == 200) {
+        setState(() {
+          loading_drivers = false;
+          for (int i = 0; i < response.data.length; ++i) {
+            print('$i\n${response.data[i]}');
+            _drivers.add(Driver.fromJson(response.data[i]));
+          }
+        });
+      } else {
+        print(
+            'something went wrong with the response(statusCode not 200): $response\n');
+      }
+    } on Exception catch (e) {
+      print('http get drivers error: $e');
+    }
+  }
+
+  Future _getCars() async {
     Response response;
     try {
       response = await _http.getAllCars();
       if (response.statusCode == 200) {
         setState(() {
-          loading = false;
+          loading_cars = false;
           for (int i = 0; i < response.data.length; ++i) {
             _cars.add(Car.fromJson(response.data[i]));
           }
@@ -77,9 +103,9 @@ class _HomeState extends State<Home>
 
   @override
   Widget build(BuildContext context) {
-    //load
-    if (loading)
-      return Scaffold(body: const Center(child: CircularProgressIndicator()));
+    Widget loading_widget =
+        Scaffold(body: const Center(child: CircularProgressIndicator()));
+
     return Scaffold(
         appBar: AppBar(
           title: Center(child: Text('Driver\'s Home')),
@@ -100,36 +126,35 @@ class _HomeState extends State<Home>
           child: TabBarView(
             controller: _tabController,
             children: [
-              Scrollbar(
-                  child: Center(
-                child: ListView(
-                  restorationId: 'drives_list_view',
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  children: [
-                    // for (int index = 1; index < 21; index++)
-                    //   ListTile(
-                    //       leading: ExcludeSemantics(
-                    //         child: CircleAvatar(child: Text('Drive $index')),
-                    //       ),
-                    //       title: Text('some name of a drive number $index'),
-                    //       subtitle:
-                    //           Text('some secandry info about this drive')),
-                  ],
-                ),
-              )),
-              Scrollbar(
-                child: ListView(
-                  restorationId: 'cars_list_view',
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  children: [
-                    for (int i = 0; i < _cars.length; ++i)
-                      CompactCar(
-                        car: _cars[i],
-                        http: _http,
+              //each child in the TapBar needs to load first
+              loading_drivers
+                  ? loading_widget
+                  : Scrollbar(
+                      child: ListView(
+                        restorationId: 'drives_list_view',
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        children: [
+                          for (int i = 0; i < _drivers.length; i++)
+                            CompactDriver(driver: _drivers[i]),
+                        ],
                       ),
-                  ],
-                ),
-              ),
+                    ),
+
+              loading_cars
+                  ? loading_widget
+                  : Scrollbar(
+                      child: ListView(
+                        restorationId: 'cars_list_view',
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        children: [
+                          for (int i = 0; i < _cars.length; ++i)
+                            CompactCar(
+                              car: _cars[i],
+                              http: _http,
+                            ),
+                        ],
+                      ),
+                    ),
             ],
           ),
         ));

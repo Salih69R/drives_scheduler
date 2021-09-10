@@ -1,6 +1,6 @@
-import 'package:drives_scheduler/DATA/Model/Car/car.dart';
-import 'package:drives_scheduler/DATA/date_validation.dart';
-import 'package:drives_scheduler/DATA/http_service.dart';
+import 'package:drives_scheduler/data/model/car/car.dart';
+import 'package:drives_scheduler/data/date_validation.dart';
+import 'package:drives_scheduler/data/http_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'detailed_car.dart';
@@ -14,16 +14,19 @@ class CompactCar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color_by_date =
-        isCarDatesValid(car) ? Colors.transparent : Colors.red;
-    Widget subtitle_by_date = isCarDatesValid(car)
+    int un_valid_dates = carCountUnValidDates(car);
+    Color color_by_date = un_valid_dates == 0 ? Colors.transparent : Colors.red;
+    Widget subtitle_by_date = un_valid_dates == 0
         ? Center()
-        : Text('some date will expire in less than a month!');
+        : Text('WARNING! you have $un_valid_dates dates you need to extend');
 
-    return SafeArea(
-        child: Padding(
-      padding: EdgeInsets.all(4),
+    return Container(
+      margin: const EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(5)),
       child: ListTile(
+        contentPadding: EdgeInsets.all(2),
         tileColor: color_by_date,
         leading: ExcludeSemantics(
           child: CircleAvatar(
@@ -48,6 +51,6 @@ class CompactCar extends StatelessWidget {
           );
         },
       ),
-    ));
+    );
   }
 }

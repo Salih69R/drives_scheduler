@@ -1,4 +1,4 @@
-import 'package:drives_scheduler/UI/driver_home.dart';
+import 'package:drives_scheduler/UI/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DriverHome(),
+      home: Home(),
     );
   }
 }

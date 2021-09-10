@@ -14,17 +14,17 @@ class Driver {
     required this.Tel2,
   });
   int Id;
-  String Cel1;
-  String Cel2;
   String DrvCode;
-  String DrvDesc;
   String DrvFulNam;
-  String LinchNum;
-  String LicnType;
-  String LicnYear;
+  String? LinchNum;
   String LincExpDt;
-  String Tel1;
-  String Tel2;
+  String? Cel1;
+  String? Cel2;
+  String? DrvDesc;
+  String? LicnType;
+  String? LicnYear;
+  String? Tel1;
+  String? Tel2;
 
   factory Driver.fromJson(Map<String, dynamic> json) => _$DriverFromJson(json);
   Map<String, dynamic> toJson() => _$DriverToJson(this);
@@ -48,16 +48,16 @@ class Driver {
 Driver _$DriverFromJson(Map<String, dynamic> json) {
   return Driver(
     Id: json['Id'] as int,
-    Cel1: json['Cel1'] as String,
-    Cel2: json['Cel2'] as String,
     DrvCode: json['DrvCode'] as String,
-    DrvDesc: json['DrvDesc'] as String,
     DrvFulNam: json['DrvFulNam'] as String,
-    LinchNum: json['LinchNum'] as String,
-    LicnType: json['LicnType'] as String,
-    LicnYear: json['LicnYear'] as String,
+    LinchNum: json['LinchNum'] as String?,
     LincExpDt: json['LincExpDt'] as String,
-    Tel1: json['Tel1'] as String,
-    Tel2: json['Tel2'] as String,
+    Cel1: json['Cel1'] as String?,
+    Cel2: json['Cel2'] as String?,
+    DrvDesc: json['DrvDesc'] as String?,
+    LicnType: json['LicnType'] as String?,
+    LicnYear: json['LicnYear'] as String?,
+    Tel1: json['Tel1'] as String?,
+    Tel2: json['Tel2'] as String?,
   );
 }

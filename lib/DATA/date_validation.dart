@@ -1,4 +1,4 @@
-import 'package:drives_scheduler/DATA/Model/Car/car.dart';
+import 'package:drives_scheduler/data/model/car/car.dart';
 
 bool isDateFarEnough(String? date) {
   // date = 'dd/mm/yyyy'
@@ -12,13 +12,14 @@ bool isDateFarEnough(String? date) {
       today.year * 365 + (today.month + 1) * 30 + today.day;
 }
 
-bool isCarDatesValid(Car car) {
-  if (!isDateFarEnough(car.AdminDate)) return false;
-  if (!isDateFarEnough(car.VInsuDate)) return false;
-  if (!isDateFarEnough(car.VTestDate)) return false;
-  if (!isDateFarEnough(car.BrakesDate)) return false;
-  if (!isDateFarEnough(car.WinterDate)) return false;
-  if (!isDateFarEnough(car.ActivatDate)) return false;
+int carCountUnValidDates(Car car) {
+  int count = 0;
+  if (!isDateFarEnough(car.AdminDate)) ++count;
+  if (!isDateFarEnough(car.VInsuDate)) ++count;
+  if (!isDateFarEnough(car.VTestDate)) ++count;
+  if (!isDateFarEnough(car.BrakesDate)) ++count;
+  if (!isDateFarEnough(car.WinterDate)) ++count;
+  if (!isDateFarEnough(car.ActivatDate)) ++count;
 
-  return true;
+  return count;
 }

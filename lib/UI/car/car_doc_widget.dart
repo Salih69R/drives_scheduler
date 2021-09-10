@@ -1,4 +1,4 @@
-import 'package:drives_scheduler/DATA/Model/Car/car_doc.dart';
+import 'package:drives_scheduler/data/model/car/car_doc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
