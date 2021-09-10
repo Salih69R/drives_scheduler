@@ -4,16 +4,16 @@ import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:drives_scheduler/UI/compact_car.dart';
 import 'package:flutter/material.dart';
 
-class DriverHome extends StatefulWidget {
-  DriverHome({Key? key}) : super(key: key);
+class Home extends StatefulWidget {
+  Home({Key? key}) : super(key: key);
 
   // final String name; required this.name
 
   @override
-  _DriverHomeState createState() => _DriverHomeState();
+  _HomeState createState() => _HomeState();
 }
 
-class _DriverHomeState extends State<DriverHome>
+class _HomeState extends State<Home>
     with SingleTickerProviderStateMixin, RestorationMixin {
   final RestorableInt tabIndex = RestorableInt(0);
   late TabController _tabController;
