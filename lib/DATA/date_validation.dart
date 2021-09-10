@@ -1,20 +1,12 @@
 import 'package:drives_scheduler/DATA/Model/car.dart';
 
 bool isDateFarEnough(String? date) {
-  //TODO: get today
-  //  return trueif  Date >= today + month -> okay
-
-  //var string = 'dartlang';
-// string.substring(1);    // 'artlang'
-// string.substring(1, 4); // 'art'
-
   // date = 'dd/mm/yyyy'
   if (date == null) return false;
 
   int day = int.parse(date.substring(0, 2));
   int month = int.parse(date.substring(3, 5));
   int year = int.parse(date.substring(6, 10));
-  // print('date = $date\nday = $day, month = $month, year = $year');
   DateTime today = DateTime.now();
   return year * 365 + month * 30 + day >=
       today.year * 365 + (today.month + 1) * 30 + today.day;

@@ -1,9 +1,13 @@
+import 'dart:ui';
+
 import 'package:dio/dio.dart';
 import 'package:drives_scheduler/DATA/Model/car_doc.dart';
 import 'package:drives_scheduler/DATA/Model/car_records.dart';
+import 'package:drives_scheduler/DATA/date_validation.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:drives_scheduler/UI/car_doc_widget.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class DetailedCar extends StatefulWidget {
@@ -35,7 +39,6 @@ class _DetailedCarState extends State<DetailedCar>
       length: 2,
       vsync: this,
     );
-
     _tabController.addListener(() {
       setState(() {
         tabIndex.value = _tabController.index;
@@ -60,16 +63,24 @@ class _DetailedCarState extends State<DetailedCar>
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Driver\'s Home'),
+        centerTitle: true,
+        title: Text('${_carRecords.car.VehNumber}'),
         automaticallyImplyLeading: false,
-        bottom: TabBar(
-          controller: _tabController,
-          isScrollable: true,
-          tabs: [
-            Tab(text: 'Vehicle details'),
-            Tab(text: 'Documents and Records'),
-          ],
-        ),
+      ),
+      bottomNavigationBar: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          TabBar(
+            labelColor: Colors.black,
+            controller: _tabController,
+            isScrollable: true,
+            tabs: [
+              Expanded(child: Tab(text: 'Vehicle details')),
+              Expanded(child: Tab(text: 'Documents and Records')),
+            ],
+          ),
+        ],
       ),
       body: Center(
         child: TabBarView(
@@ -83,85 +94,155 @@ class _DetailedCarState extends State<DetailedCar>
                   padding: EdgeInsets.all(6),
                   child: Column(
                     children: [
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text('Id: ${_carRecords.car.Id}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text(
-                            'VehCode: ${_carRecords.car.VehCode}',
-                            textAlign: TextAlign.end,
+                      Row(
+                        children: [
+                          Icon(Icons.perm_data_setting),
+                          Text(
+                            'Details',
                             style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      Flexible(
+                          flex: 1,
+                          fit: FlexFit.tight,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                  child: Text(
+                                'VehCode: ${_carRecords.car.VehCode}',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )),
+                              Expanded(
+                                  child: Text(
+                                      'VehNumber: ${_carRecords.car.VehNumber}')),
+                            ],
                           )),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child:
-                              Text('VehNumber: ${_carRecords.car.VehNumber}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                        'VStatus: ${_carRecords.car.VStatus}')),
+                                Expanded(
+                                    child: Text(
+                                        'VLockCode: ${_carRecords.car.VLockCode}'))
+                              ])),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text(
-                              'ActivatDate: ${_carRecords.car.ActivatDate}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                        'KilmtrTimng: ${_carRecords.car.KilmtrTimng}')),
+                                Expanded(
+                                    child: Text(
+                                        'Kilometer: ${_carRecords.car.Kilometer}')),
+                              ])),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child:
-                              Text('AdminDate: ${_carRecords.car.AdminDate}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                        'VKiloMtr: ${_carRecords.car.VKiloMtr}')),
+                                Expanded(
+                                    child: Text(
+                                        'Treatment: ${_carRecords.car.Treatment}')),
+                              ])),
+                      divider,
+                      Row(
+                        children: [
+                          Icon(Icons.date_range),
+                          Text(
+                            'Dates',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text(
-                              'BrakesDate: ${_carRecords.car.BrakesDate}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  'ActivatDate: ${_carRecords.car.ActivatDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.ActivatDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  'AdminDate: ${_carRecords.car.AdminDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.AdminDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                ))
+                              ])),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text('DrvCode: ${_carRecords.car.DrvCode}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  'BrakesDate: ${_carRecords.car.BrakesDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.BrakesDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  'VInsuDate: ${_carRecords.car.VInsuDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.VInsuDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                ))
+                              ])),
                       Flexible(
                           flex: 1,
                           fit: FlexFit.tight,
-                          child: Text(
-                              'KilmtrTimng: ${_carRecords.car.KilmtrTimng}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child:
-                              Text('Kilometer: ${_carRecords.car.Kilometer}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text('VKiloMtr: ${_carRecords.car.VKiloMtr}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child:
-                              Text('Treatment: ${_carRecords.car.Treatment}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child:
-                              Text('VInsuDate: ${_carRecords.car.VInsuDate}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child:
-                              Text('VTestDate: ${_carRecords.car.VTestDate}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text('VStatus: ${_carRecords.car.VStatus}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Text(
-                              'WinterDate: ${_carRecords.car.WinterDate}')),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child:
-                              Text('VLockCode: ${_carRecords.car.VLockCode}')),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Text(
+                                  'VTestDate: ${_carRecords.car.VTestDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.VTestDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                )),
+                                Expanded(
+                                    child: Text(
+                                  'WinterDate: ${_carRecords.car.WinterDate}',
+                                  style: TextStyle(
+                                      color: isDateFarEnough(
+                                              _carRecords.car.ActivatDate)
+                                          ? Colors.green
+                                          : Colors.red),
+                                ))
+                              ])),
                     ],
                   ),
                 ))),
