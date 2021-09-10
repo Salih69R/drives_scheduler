@@ -95,7 +95,7 @@ class _DetailedCarState extends State<DetailedCar>
                 Expanded(
                     child: SafeArea(
                         child: Padding(
-                  padding: EdgeInsets.all(6),
+                  padding: EdgeInsets.all(12),
                   child: Column(
                     children: [
                       Row(

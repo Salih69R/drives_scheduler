@@ -1,3 +1,4 @@
+import 'package:drives_scheduler/UI/driver/detailed_driver.dart';
 import 'package:drives_scheduler/data/date_validation.dart';
 import 'package:flutter/material.dart';
 import 'package:drives_scheduler/data/model/driver.dart';
@@ -9,7 +10,7 @@ class CompactDriver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color_by_date =
-        !isDateFarEnough(driver.LincExpDt) ? Colors.transparent : Colors.red;
+        isDateFarEnough(driver.LincExpDt) ? Colors.transparent : Colors.red;
     Widget subtitle_by_date = !isDateFarEnough(driver.LincExpDt)
         ? Center()
         : Text('WARNING! your license is about or already EXPIRED!');
@@ -36,14 +37,13 @@ class CompactDriver extends StatelessWidget {
         title: Text('${driver.DrvFulNam}'),
         subtitle: subtitle_by_date,
         isThreeLine: false,
-        // onTap: () {
-        //   Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //         builder: (context) =>
-        //             DetailedCar(http: http, vehCode: car.VehCode)),
-        //   );
-        // },
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailedDriver(driver: driver)),
+          );
+        },
       ),
     );
   }
