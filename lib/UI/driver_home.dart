@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:drives_scheduler/DATA/Model/car.dart';
+import 'package:drives_scheduler/DATA/Model/Car/car.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:drives_scheduler/UI/compact_car.dart';
 import 'package:flutter/material.dart';

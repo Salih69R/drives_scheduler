@@ -1,4 +1,4 @@
-import 'package:drives_scheduler/DATA/Model/car.dart';
+import 'package:drives_scheduler/DATA/Model/Car/car.dart';
 
 bool isDateFarEnough(String? date) {
   // date = 'dd/mm/yyyy'

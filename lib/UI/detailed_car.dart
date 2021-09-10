@@ -1,8 +1,8 @@
 import 'dart:ui';
 
 import 'package:dio/dio.dart';
-import 'package:drives_scheduler/DATA/Model/car_doc.dart';
-import 'package:drives_scheduler/DATA/Model/car_records.dart';
+import 'package:drives_scheduler/DATA/Model/Car/car_doc.dart';
+import 'package:drives_scheduler/DATA/Model/Car/car_records.dart';
 import 'package:drives_scheduler/DATA/date_validation.dart';
 import 'package:drives_scheduler/DATA/http_service.dart';
 import 'package:drives_scheduler/UI/car_doc_widget.dart';

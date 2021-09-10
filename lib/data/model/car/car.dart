@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'car.g.dart';
-
 @JsonSerializable()
 class Car {
   @JsonKey(name: 'Id')
@@ -67,3 +65,43 @@ class Car {
 //         public string VehText6 { get; set; }
 
 }
+
+Car _$CarFromJson(Map<String, dynamic> json) {
+  return Car(
+    Id: json['Id'] as int,
+    VehCode: json['VehCode'] as String,
+    VehNumber: json['VehNumber'] as String,
+    ActivatDate: json['ActivatDate'] as String?,
+    AdminDate: json['AdminDate'] as String?,
+    BrakesDate: json['BrakesDate'] as String?,
+    DrvCode: json['DrvCode'] as String?,
+    KilmtrTimng: json['KilmtrTimng'] as String?,
+    Kilometer: json['Kilometer'] as String?,
+    Treatment: json['Treatment'] as String?,
+    VInsuDate: json['VInsuDate'] as String?,
+    VKiloMtr: json['VKiloMtr'] as String?,
+    VLockCode: json['VLockCode'] as String?,
+    VStatus: json['VStatus'] as String?,
+    VTestDate: json['VTestDate'] as String?,
+    WinterDate: json['WinterDate'] as String?,
+  );
+}
+
+Map<String, dynamic> _$CarToJson(Car instance) => <String, dynamic>{
+      'Id': instance.Id,
+      'ActivatDate': instance.ActivatDate,
+      'AdminDate': instance.AdminDate,
+      'BrakesDate': instance.BrakesDate,
+      'VehCode': instance.VehCode,
+      'VehNumber': instance.VehNumber,
+      'VLockCode': instance.VLockCode,
+      'Kilometer': instance.Kilometer,
+      'Treatment': instance.Treatment,
+      'VKiloMtr': instance.VKiloMtr,
+      'KilmtrTimng': instance.KilmtrTimng,
+      'VTestDate': instance.VTestDate,
+      'VInsuDate': instance.VInsuDate,
+      'VStatus': instance.VStatus,
+      'DrvCode': instance.DrvCode,
+      'WinterDate': instance.WinterDate,
+    };
