@@ -80,8 +80,8 @@ class _DetailedCarState extends State<DetailedCar>
                 controller: _tabController,
                 isScrollable: true,
                 tabs: [
-                  Expanded(child: Tab(text: 'Vehicle details')),
-                  Expanded(child: Tab(text: 'Documents and Records')),
+                  Tab(text: 'Vehicle details'),
+                  Tab(text: 'Documents and Records'),
                 ],
               ),
             ],
@@ -250,7 +250,6 @@ class _DetailedCarState extends State<DetailedCar>
                     ],
                   ),
                 ))),
-                //some list of docs
               ],
             ),
             Scrollbar(
@@ -264,30 +263,13 @@ class _DetailedCarState extends State<DetailedCar>
                             padding: EdgeInsets.all(8),
                             child: Column(children: [
                               CarDocWidget(
-                                  CarDoc.fromJson(_carRecords.records[i])),
+                                  documment:
+                                      CarDoc.fromJson(_carRecords.records[i])),
                               divider,
                             ]))),
                 ]))
           ],
         ),
-        // SafeArea(
-        //     top: false,
-        //     child: Padding(
-        //       padding: const EdgeInsets.all(8),
-        //       child: Column(
-        //         children: [
-        //           Title(color: Colors.black, child: Text('Title')),
-        //           divider,
-        //           divider,
-        //           divider,
-        //           ElevatedButton(
-        //               onPressed: () {
-        //                 Navigator.pop(context);
-        //               },
-        //               child: Text('Back'))
-        //         ],
-        //       ),
-        //     ))
       ),
     );
   }
@@ -299,14 +281,7 @@ class _DetailedCarState extends State<DetailedCar>
       if (response.statusCode == 200) {
         setState(() {
           loading = false;
-          print(
-              'succefully got response: \n $response \n response.data: \n $response\n\n');
           _carRecords = CarRecords.fromJson(response.data);
-          print(
-              '\nalso, _carRecords.records.length = ${_carRecords.records.length}');
-          for (int i = 0; i < _carRecords.records.length; ++i) {
-            print('_carRecords.records[i] = ${_carRecords.records[i]}');
-          }
         });
       } else {
         print(

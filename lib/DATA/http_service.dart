@@ -25,7 +25,6 @@ class HttpService {
             path: url, contentType: "application/json;charset=UTF-8"));
     try {
       response = await _dio.get(url);
-      print('response = ${response}');
       return response;
     } on DioError catch (error, stacktrace) {
       print("Exception occured: $error stackTrace: $stacktrace");

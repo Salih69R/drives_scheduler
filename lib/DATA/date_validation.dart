@@ -13,31 +13,12 @@ bool isDateFarEnough(String? date) {
 }
 
 bool isCarDatesValid(Car car) {
-  print('car number ${car.VehNumber}');
-  if (!isDateFarEnough(car.AdminDate)) {
-    print('car.AdminDate ${car.AdminDate}');
-    return false;
-  }
-  if (!isDateFarEnough(car.VInsuDate)) {
-    print('car.VInsuDate ${car.VInsuDate}');
-    return false;
-  }
-  if (!isDateFarEnough(car.VTestDate)) {
-    print('car.VTestDate ${car.VTestDate}');
-    return false;
-  }
-  if (!isDateFarEnough(car.BrakesDate)) {
-    print('car.BrakesDate ${car.BrakesDate}');
-    return false;
-  }
-  if (!isDateFarEnough(car.WinterDate)) {
-    print('car.WinterDate ${car.WinterDate}');
-    return false;
-  }
-  if (!isDateFarEnough(car.ActivatDate)) {
-    print('car.ActivatDate ${car.ActivatDate}');
-    return false;
-  }
-  print('all dates valid');
+  if (!isDateFarEnough(car.AdminDate)) return false;
+  if (!isDateFarEnough(car.VInsuDate)) return false;
+  if (!isDateFarEnough(car.VTestDate)) return false;
+  if (!isDateFarEnough(car.BrakesDate)) return false;
+  if (!isDateFarEnough(car.WinterDate)) return false;
+  if (!isDateFarEnough(car.ActivatDate)) return false;
+
   return true;
 }

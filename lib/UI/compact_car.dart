@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'detailed_car.dart';
 
+//is basically a ListTile
 class CompactCar extends StatelessWidget {
   CompactCar({Key? key, required this.car, required this.http})
       : super(key: key);
