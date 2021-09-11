@@ -16,10 +16,10 @@ class CompactDriver extends StatelessWidget {
         : Text('WARNING! your license is about or already EXPIRED!');
 
     return Container(
-      margin: const EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 1),
-          borderRadius: BorderRadius.circular(5)),
+          border: Border.all(color: Colors.black),
+          borderRadius: BorderRadius.circular(2)),
       child: ListTile(
         contentPadding: EdgeInsets.all(2),
         tileColor: color_by_date,
