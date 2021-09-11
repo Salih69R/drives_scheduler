@@ -31,15 +31,6 @@ class DetailedDriver extends StatelessWidget {
               padding: EdgeInsets.all(12),
               child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.perm_data_setting),
-                      Text(
-                        'Details',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
                   Flexible(
                       flex: 1,
                       fit: FlexFit.tight,
@@ -48,14 +39,26 @@ class DetailedDriver extends StatelessWidget {
                           child: Row(
                               // mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Expanded(
-                                    child: Center(
-                                        child: Text(
-                                            'DrvFulNam: ${driver.DrvFulNam}'))),
-                                Expanded(
-                                    child: Center(
-                                        child:
-                                            Text('DrvCode: ${driver.DrvCode}')))
+                                Column(children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.perm_data_setting),
+                                      Text(
+                                        'Details',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  Expanded(
+                                      child: Center(
+                                          child: Text(
+                                              'DrvFulNam: ${driver.DrvFulNam}'))),
+                                  Expanded(
+                                      child: Center(
+                                          child: Text(
+                                              'DrvCode: ${driver.DrvCode}')))
+                                ])
                               ]))),
                   Flexible(
                       flex: 2,
@@ -64,6 +67,16 @@ class DetailedDriver extends StatelessWidget {
                           margin: EdgeInsets.all(6),
                           child: Column(
                             children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.perm_data_setting),
+                                  Text(
+                                    'Details',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                               Expanded(
                                   child: Row(
                                       mainAxisAlignment:
@@ -107,6 +120,16 @@ class DetailedDriver extends StatelessWidget {
                           margin: EdgeInsets.all(6),
                           child: Column(
                             children: [
+                              Row(
+                                children: [
+                                  Icon(Icons.perm_data_setting),
+                                  Text(
+                                    'Details',
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
                               Expanded(
                                   child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
