@@ -34,10 +34,13 @@ class DetailedDriver extends StatelessWidget {
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(child: Text('סוג רשיון: ${driver.LicnType}'))));
+
+    //TODO: since licnhNum is always null in the json...
+    // should I not show it at all
     Widget card_licNum = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('LinchNum: ${driver.LinchNum}'))));
+            child: Center(child: Text('מספר רשיון: ${driver.LinchNum}'))));
 
     Widget card_licExp = Expanded(
         child: Card(

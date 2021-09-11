@@ -18,7 +18,7 @@ class CompactCar extends StatelessWidget {
     Color color_by_date = un_valid_dates == 0 ? Colors.white : Colors.red;
     Widget subtitle_by_date = un_valid_dates == 0
         ? Center()
-        : Text('WARNING! you have $un_valid_dates dates you need to extend');
+        : Text('אזהרה! יש $un_valid_dates סעיפיף שצריך לעדכן');
 
     return Container(
       margin: const EdgeInsets.all(8),

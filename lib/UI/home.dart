@@ -106,58 +106,60 @@ class _HomeState extends State<Home>
     Widget loading_widget =
         Scaffold(body: const Center(child: CircularProgressIndicator()));
 
-    return Scaffold(
-        backgroundColor: Colors.grey.shade200,
-        appBar: AppBar(
-          title: Center(child: Text('בית')),
-          automaticallyImplyLeading: false,
-          bottom: TabBar(
-            labelColor: Colors.white,
-            indicatorColor: Colors.white,
-            unselectedLabelColor: Colors.white54,
-            controller: _tabController,
-            isScrollable: true,
-            tabs: [
-              Tab(text: 'נהגים'),
-              Tab(text: 'רכבים'),
-            ],
-          ),
-        ),
-        body: Center(
-          child: TabBarView(
-            controller: _tabController,
-            children: [
-              //each child in the TapBar needs to load first
-              loading_drivers
-                  ? loading_widget
-                  : Scrollbar(
-                      child: ListView(
-                        restorationId: 'drives_list_view',
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        children: [
-                          for (int i = 0; i < _drivers.length; i++)
-                            CompactDriver(driver: _drivers[i]),
-                        ],
-                      ),
-                    ),
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+            backgroundColor: Colors.grey.shade200,
+            appBar: AppBar(
+              title: Center(child: Text('בית')),
+              automaticallyImplyLeading: false,
+              bottom: TabBar(
+                labelColor: Colors.white,
+                indicatorColor: Colors.white,
+                unselectedLabelColor: Colors.white54,
+                controller: _tabController,
+                isScrollable: true,
+                tabs: [
+                  Tab(text: 'נהגים'),
+                  Tab(text: 'רכבים'),
+                ],
+              ),
+            ),
+            body: Center(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  //each child in the TapBar needs to load first
+                  loading_drivers
+                      ? loading_widget
+                      : Scrollbar(
+                          child: ListView(
+                            restorationId: 'drives_list_view',
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            children: [
+                              for (int i = 0; i < _drivers.length; i++)
+                                CompactDriver(driver: _drivers[i]),
+                            ],
+                          ),
+                        ),
 
-              loading_cars
-                  ? loading_widget
-                  : Scrollbar(
-                      child: ListView(
-                        restorationId: 'cars_list_view',
-                        padding: const EdgeInsets.symmetric(vertical: 8),
-                        children: [
-                          for (int i = 0; i < _cars.length; ++i)
-                            CompactCar(
-                              car: _cars[i],
-                              http: _http,
-                            ),
-                        ],
-                      ),
-                    ),
-            ],
-          ),
-        ));
+                  loading_cars
+                      ? loading_widget
+                      : Scrollbar(
+                          child: ListView(
+                            restorationId: 'cars_list_view',
+                            padding: const EdgeInsets.symmetric(vertical: 8),
+                            children: [
+                              for (int i = 0; i < _cars.length; ++i)
+                                CompactCar(
+                                  car: _cars[i],
+                                  http: _http,
+                                ),
+                            ],
+                          ),
+                        ),
+                ],
+              ),
+            )));
   }
 }

@@ -61,55 +61,56 @@ class _DetailedCarState extends State<DetailedCar>
       endIndent: 2,
     );
 
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('${_carRecords.car.VehNumber}'),
-        automaticallyImplyLeading: false,
-      ),
-      bottomNavigationBar: Container(
-          color: Colors.blue[400],
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              TabBar(
-                labelColor: Colors.white,
-                indicatorColor: Colors.white,
-                unselectedLabelColor: Colors.white54,
-                controller: _tabController,
-                isScrollable: true,
-                tabs: [
-                  Tab(text: 'Vehicle details'),
-                  Tab(text: 'Documents and Records'),
+    return Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text('רכב מספר ${_carRecords.car.VehNumber}'),
+            automaticallyImplyLeading: false,
+          ),
+          bottomNavigationBar: Container(
+              color: Colors.blue[400],
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  TabBar(
+                    labelColor: Colors.white,
+                    indicatorColor: Colors.white,
+                    unselectedLabelColor: Colors.white54,
+                    controller: _tabController,
+                    isScrollable: true,
+                    tabs: [
+                      Tab(text: 'פרטי'),
+                      Tab(text: 'מסמכים'),
+                    ],
+                  ),
                 ],
-              ),
-            ],
-          )),
-      body: Center(
-        child: TabBarView(
-          controller: _tabController,
-          children: [
-            Column(
+              )),
+          body: Center(
+            child: TabBarView(
+              controller: _tabController,
               children: [
-                Expanded(
-                    child: SafeArea(
-                        child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Column(
-                    children: [
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Card(
-                              margin: EdgeInsets.all(6),
+                Column(
+                  children: [
+                    Expanded(
+                        child: SafeArea(
+                            child: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Column(
+                        children: [
+                          //////////////////////////////////////////begin///
+                          Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
                               child: Column(
                                 children: [
                                   Row(
                                     children: [
                                       Icon(Icons.perm_data_setting),
                                       Text(
-                                        'Details',
+                                        'פרטים',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -123,17 +124,23 @@ class _DetailedCarState extends State<DetailedCar>
                                             MainAxisAlignment.center,
                                         children: [
                                           Expanded(
-                                              child: Center(
-                                            child: Text(
-                                                'VehCode: ${_carRecords.car.VehCode}',
-                                                style: TextStyle(
-                                                    fontWeight:
-                                                        FontWeight.bold)),
-                                          )),
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                    child: Text(
+                                                        'קוד: ${_carRecords.car.VehCode}',
+                                                        style: TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .bold)),
+                                                  ))),
                                           Expanded(
-                                              child: Center(
-                                                  child: Text(
-                                                      'VehNumber: ${_carRecords.car.VehNumber}'))),
+                                            child: Card(
+                                                margin: EdgeInsets.all(6),
+                                                child: Center(
+                                                    child: Text(
+                                                        'מספר: ${_carRecords.car.VehNumber}'))),
+                                          )
                                         ],
                                       )),
                                   Flexible(
@@ -144,69 +151,33 @@ class _DetailedCarState extends State<DetailedCar>
                                               MainAxisAlignment.center,
                                           children: [
                                             Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'VStatus: ${_carRecords.car.VStatus}'))),
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                      child: Text(
+                                                          'VStatus: ${_carRecords.car.VStatus}'))),
+                                            ),
                                             Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'VLockCode: ${_carRecords.car.VLockCode}')))
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                        child: Text(
+                                                            'VLockCode: ${_carRecords.car.VLockCode}'))))
                                           ])),
                                 ],
-                              ))),
-                      Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Card(
-                              margin: EdgeInsets.all(6),
-                              child: Column(
-                                children: [
-                                  Flexible(
-                                      flex: 1,
-                                      fit: FlexFit.tight,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'KilmtrTimng: ${_carRecords.car.KilmtrTimng}'))),
-                                            Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'Kilometer: ${_carRecords.car.Kilometer}'))),
-                                          ])),
-                                  Flexible(
-                                      flex: 1,
-                                      fit: FlexFit.tight,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'VKiloMtr: ${_carRecords.car.VKiloMtr}'))),
-                                            Expanded(
-                                                child: Center(
-                                                    child: Text(
-                                                        'Treatment: ${_carRecords.car.Treatment}'))),
-                                          ])),
-                                ],
-                              ))),
-                      Flexible(
-                          flex: 2,
-                          fit: FlexFit.tight,
-                          child: Card(
-                              margin: EdgeInsets.all(6),
+                              )),
+
+                          divider,
+                          Flexible(
+                              flex: 2,
+                              fit: FlexFit.tight,
                               child: Column(
                                 children: [
                                   Row(
                                     children: [
-                                      Icon(Icons.date_range),
+                                      Icon(Icons.auto_fix_high),
                                       Text(
-                                        'Dates',
+                                        'טיפולים',
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -220,27 +191,19 @@ class _DetailedCarState extends State<DetailedCar>
                                               MainAxisAlignment.center,
                                           children: [
                                             Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'ActivatDate: ${_carRecords.car.ActivatDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .ActivatDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            )),
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                      child: Text(
+                                                          'ק"מ לטיימינג הבא: ${_carRecords.car.KilmtrTimng}'))),
+                                            ),
                                             Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'AdminDate: ${_carRecords.car.AdminDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .AdminDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            ))
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                      child: Text(
+                                                          'קילומטר: ${_carRecords.car.Kilometer}'))),
+                                            )
                                           ])),
                                   Flexible(
                                       flex: 1,
@@ -250,85 +213,180 @@ class _DetailedCarState extends State<DetailedCar>
                                               MainAxisAlignment.center,
                                           children: [
                                             Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'BrakesDate: ${_carRecords.car.BrakesDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .BrakesDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            )),
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                      child: Text(
+                                                          'הטיפול הבא: ${_carRecords.car.VKiloMtr}'))),
+                                            ),
                                             Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'VInsuDate: ${_carRecords.car.VInsuDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .VInsuDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            ))
-                                          ])),
-                                  Flexible(
-                                      flex: 1,
-                                      fit: FlexFit.tight,
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'VTestDate: ${_carRecords.car.VTestDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .VTestDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            )),
-                                            Expanded(
-                                                child: Center(
-                                              child: Text(
-                                                  'WinterDate: ${_carRecords.car.WinterDate}',
-                                                  style: TextStyle(
-                                                      color: isDateFarEnough(
-                                                              _carRecords.car
-                                                                  .ActivatDate)
-                                                          ? Colors.green
-                                                          : Colors.red)),
-                                            ))
+                                              child: Card(
+                                                  margin: EdgeInsets.all(6),
+                                                  child: Center(
+                                                      child: Text(
+                                                          'טיפול אחרון: ${_carRecords.car.Treatment}'))),
+                                            )
                                           ])),
                                 ],
-                              ))),
-                    ],
-                  ),
-                ))),
+                              )),
+                          divider,
+                          Flexible(
+                              flex: 3,
+                              fit: FlexFit.tight,
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(Icons.date_range),
+                                      Text(
+                                        'תאיריכים ואישורים',
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                  Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'אישור הפעלה: ${_carRecords.car.ActivatDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .ActivatDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    ))),
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'תאריך מנהלה: ${_carRecords.car.AdminDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .AdminDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    )))
+                                          ])),
+                                  Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'אישור בלמים: ${_carRecords.car.BrakesDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .BrakesDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    ))),
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'תאריך פקיעת הביטוח: ${_carRecords.car.VInsuDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .VInsuDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    )))
+                                          ])),
+                                  Flexible(
+                                      flex: 1,
+                                      fit: FlexFit.tight,
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'תאריך הטסט הבא: ${_carRecords.car.VTestDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .VTestDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    ))),
+                                            Expanded(
+                                                child: Card(
+                                                    margin: EdgeInsets.all(6),
+                                                    child: Center(
+                                                      child: Text(
+                                                          'בדיקת חורף: ${_carRecords.car.WinterDate}',
+                                                          style: TextStyle(
+                                                              color: isDateFarEnough(
+                                                                      _carRecords
+                                                                          .car
+                                                                          .ActivatDate)
+                                                                  ? Colors.green
+                                                                  : Colors
+                                                                      .red)),
+                                                    ))),
+                                          ])),
+                                ],
+                              )),
+                          //////////////////////////////////////////end///
+                        ],
+                      ),
+                    ))),
+                  ],
+                ),
+                Scrollbar(
+                    child: ListView(
+                        restorationId: 'documents_list_view',
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        children: [
+                      for (int i = 0; i < _carRecords.records.length; ++i)
+                        SafeArea(
+                            child: Padding(
+                                padding: EdgeInsets.all(8),
+                                child: Column(children: [
+                                  CarDocWidget(
+                                      documment: CarDoc.fromJson(
+                                          _carRecords.records[i])),
+                                  divider,
+                                ]))),
+                    ]))
               ],
             ),
-            Scrollbar(
-                child: ListView(
-                    restorationId: 'documents_list_view',
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    children: [
-                  for (int i = 0; i < _carRecords.records.length; ++i)
-                    SafeArea(
-                        child: Padding(
-                            padding: EdgeInsets.all(8),
-                            child: Column(children: [
-                              CarDocWidget(
-                                  documment:
-                                      CarDoc.fromJson(_carRecords.records[i])),
-                              divider,
-                            ]))),
-                ]))
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 
   Future _getCarRecords() async {
