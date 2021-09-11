@@ -13,7 +13,7 @@ class CompactDriver extends StatelessWidget {
         isDateFarEnough(driver.LincExpDt) ? Colors.white : Colors.red;
     Widget subtitle_by_date = isDateFarEnough(driver.LincExpDt)
         ? Center()
-        : Text('WARNING! your license is about or already EXPIRED!');
+        : Text('אהרה! אתה צריך לחדש את הרשיון שלך!');
 
     return Container(
       margin: const EdgeInsets.all(8),

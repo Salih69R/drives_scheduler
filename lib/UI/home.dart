@@ -109,7 +109,7 @@ class _HomeState extends State<Home>
     return Scaffold(
         backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
-          title: Center(child: Text('Home')),
+          title: Center(child: Text('בית')),
           automaticallyImplyLeading: false,
           bottom: TabBar(
             labelColor: Colors.white,
@@ -118,8 +118,8 @@ class _HomeState extends State<Home>
             controller: _tabController,
             isScrollable: true,
             tabs: [
-              Tab(text: 'my drives'),
-              Tab(text: 'my cars'),
+              Tab(text: 'נהגים'),
+              Tab(text: 'רכבים'),
             ],
           ),
         ),
