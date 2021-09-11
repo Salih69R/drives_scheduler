@@ -8,185 +8,177 @@ class DetailedDriver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Widget divider = const Divider(
+      color: Colors.grey,
+      height: 15,
+      thickness: 1.5,
+      indent: 4,
+      endIndent: 4,
+    );
+
+    Widget card_code = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(
+                child: Text(
+              'קוד נהג ${driver.DrvCode}',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ))));
+    Widget card_name = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(
+                child: Text('שם נהג ${driver.DrvFulNam}',
+                    style: TextStyle(fontWeight: FontWeight.bold)))));
+    Widget card_licType = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(child: Text('סוג רשיון: ${driver.LicnType}'))));
+    Widget card_licNum = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(child: Text('LinchNum: ${driver.LinchNum}'))));
+
+    Widget card_licExp = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(
+                child: Text(
+              'רשיון תקף עד: ${driver.LincExpDt}',
+              style: TextStyle(
+                  color: isDateFarEnough(driver.LincExpDt)
+                      ? Colors.green
+                      : Colors.red),
+            ))));
+
+    Widget card_licYear = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(child: Text('שנת רשיון: ${driver.LicnYear}'))));
+
+    Widget card_cel1 = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(
+                child: Text(
+              'נייד 1: ${driver.Cel1}',
+            ))));
+    Widget card_cel2 = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(child: Text('נייד 2: ${driver.Cel2}'))));
+    Widget card_tel1 = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(
+                child: Text(
+              'נוסף 1: ${driver.Tel1}',
+            ))));
+    Widget card_tel2 = Expanded(
+        child: Card(
+            margin: EdgeInsets.all(6),
+            child: Center(child: Text('נוסף 2: ${driver.Tel2}'))));
+
     Widget row1_details = Flexible(
         //row1
         flex: 1,
         fit: FlexFit.tight,
-        child: Card(
-            margin: EdgeInsets.all(6),
-            child: Column(
-                // mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
                 children: [
-                  Row(
-                    children: [
-                      Icon(Icons.perm_data_setting),
-                      Text(
-                        'פרטים',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Icon(Icons.perm_data_setting),
+                  Text(
+                    'פרטים',
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  Expanded(
-                      child: Row(
-                    children: [
-                      Expanded(
-                          child: Center(
-                              child: Text('שם נהג ${driver.DrvFulNam}',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)))),
-                      Expanded(
-                          child: Center(
-                              child: Text(
-                        'קוד נהג ${driver.DrvCode}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      )))
-                    ],
-                  ))
-                ])));
+                ],
+              ),
+              Expanded(
+                  child: Row(
+                children: [card_name, card_code],
+              ))
+            ]));
 
     Widget row2 = Flexible(
         //row2
         flex: 2,
         fit: FlexFit.tight,
-        child: Card(
-            margin: EdgeInsets.all(6),
-            child: Column(
+        child: Column(
+          children: [
+            Row(
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.perm_data_setting),
-                    Text(
-                      'רשיון',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
+                Icon(Icons.perm_data_setting),
+                Text(
+                  'רשיון',
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Expanded(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                      Expanded(
-                          child: Center(
-                              child: Text('LinchNum: ${driver.LinchNum}'))),
-                      Expanded(
-                          child: Center(
-                              child: Text('LicnType: ${driver.LicnType}'))),
-                    ])),
-                Expanded(
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                      Expanded(
-                          child: Center(
-                              child: Text('שנת רשיון: ${driver.LicnYear}'))),
-                      Expanded(
-                          child: Center(
-                              child: Text(
-                        'רשיון תקף עד: ${driver.LincExpDt}',
-                        style: TextStyle(
-                            color: isDateFarEnough(driver.LincExpDt)
-                                ? Colors.green
-                                : Colors.red),
-                      ))),
-                    ]))
               ],
-            )));
+            ),
+            Expanded(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [card_licNum, card_licType])),
+            Expanded(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [card_licExp, card_licYear]))
+          ],
+        ));
 
     Widget row3 = Flexible(
         //row3
         flex: 2,
         fit: FlexFit.tight,
-        child: Card(
-            margin: EdgeInsets.all(6),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Icon(Icons.perm_data_setting),
+                Text(
+                  'צור קשר',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [card_cel1, card_cel2],
+            )),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [card_tel1, card_tel2],
+            ))
+          ],
+        ));
+
+    Widget base = Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text('${driver.DrvFulNam}'),
+            automaticallyImplyLeading: false,
+          ),
+          body: Center(
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Icon(Icons.perm_data_setting),
-                    Text(
-                      'צור קשר',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
                 Expanded(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      'נייד 1: ${driver.Cel1}',
-                    ))),
-                    Expanded(
-                        child: Center(child: Text('נייד 2: ${driver.Cel2}'))),
-                  ],
-                )),
-                Expanded(
-                    child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Center(
-                            child: Text(
-                      'נוסף 1: ${driver.Tel1}',
-                    ))),
-                    Expanded(
-                        child: Center(child: Text('נוסף 2: ${driver.Tel2}'))),
-                  ],
-                ))
+                    child: SafeArea(
+                        child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Column(
+                    children: [row1_details, divider, row2, divider, row3],
+                  ),
+                ))),
               ],
-            )));
+            ),
+          ),
+        ));
 
-    Widget base = Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('${driver.DrvFulNam}'),
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-                child: SafeArea(
-                    child: Padding(
-              padding: EdgeInsets.all(12),
-              child: Column(),
-            ))),
-          ],
-        ),
-      ),
-    );
-
-    Widget divider = const Divider(
-      color: Colors.grey,
-      height: 10,
-      thickness: 1,
-      indent: 0,
-      endIndent: 0,
-    );
-
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('${driver.DrvFulNam}'),
-        automaticallyImplyLeading: false,
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            Expanded(
-                child: SafeArea(
-                    child: Padding(
-              padding: EdgeInsets.all(12),
-              child: Column(
-                //base
-                children: [row1_details, row2, row3],
-              ),
-            ))),
-          ],
-        ),
-      ),
-    );
+    return base;
   }
 }
