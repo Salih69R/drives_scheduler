@@ -10,10 +10,10 @@ class DetailedDriver extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget divider = const Divider(
       color: Colors.grey,
-      height: 20,
-      thickness: 2,
-      indent: 5,
-      endIndent: 5,
+      height: 10,
+      thickness: 1,
+      indent: 0,
+      endIndent: 0,
     );
 
     return Scaffold(
@@ -43,67 +43,100 @@ class DetailedDriver extends StatelessWidget {
                   Flexible(
                       flex: 1,
                       fit: FlexFit.tight,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: Text('DrvFulNam: ${driver.DrvFulNam}')),
-                            Expanded(child: Text('DrvCode: ${driver.DrvCode}'))
-                          ])),
+                      child: Card(
+                          margin: EdgeInsets.all(6),
+                          child: Row(
+                              // mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    child: Center(
+                                        child: Text(
+                                            'DrvFulNam: ${driver.DrvFulNam}'))),
+                                Expanded(
+                                    child: Center(
+                                        child:
+                                            Text('DrvCode: ${driver.DrvCode}')))
+                              ]))),
                   Flexible(
-                      flex: 1,
+                      flex: 2,
                       fit: FlexFit.tight,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: Text('LinchNum: ${driver.LinchNum}')),
-                            Expanded(
-                                child: Text('LicnType: ${driver.LicnType}')),
-                          ])),
+                      child: Card(
+                          margin: EdgeInsets.all(6),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                    Expanded(
+                                        child: Center(
+                                            child: Text(
+                                                'LinchNum: ${driver.LinchNum}'))),
+                                    Expanded(
+                                        child: Center(
+                                            child: Text(
+                                                'LicnType: ${driver.LicnType}'))),
+                                  ])),
+                              Expanded(
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                    Expanded(
+                                        child: Center(
+                                            child: Text(
+                                                'LicnYear: ${driver.LicnYear}'))),
+                                    Expanded(
+                                        child: Center(
+                                            child: Text(
+                                      'LincExpDt: ${driver.LincExpDt}',
+                                      style: TextStyle(
+                                          color:
+                                              isDateFarEnough(driver.LincExpDt)
+                                                  ? Colors.green
+                                                  : Colors.red),
+                                    ))),
+                                  ]))
+                            ],
+                          ))),
                   Flexible(
-                      flex: 1,
+                      flex: 2,
                       fit: FlexFit.tight,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: Text('LicnYear: ${driver.LicnYear}')),
-                            Expanded(
-                                child: Text(
-                              'LincExpDt: ${driver.LincExpDt}',
-                              style: TextStyle(
-                                  color: isDateFarEnough(driver.LincExpDt)
-                                      ? Colors.green
-                                      : Colors.red),
-                            )),
-                          ])),
-                  Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Text(
-                            'Cel1: ${driver.Cel1}',
-                          )),
-                          Expanded(child: Text('Cel2: ${driver.Cel2}')),
-                        ],
-                      )),
-                  Flexible(
-                      flex: 1,
-                      fit: FlexFit.tight,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: Text(
-                            'Tel1: ${driver.Tel1}',
-                          )),
-                          Expanded(child: Text('Tel2: ${driver.Tel2}')),
-                        ],
-                      )),
+                      child: Card(
+                          margin: EdgeInsets.all(6),
+                          child: Column(
+                            children: [
+                              Expanded(
+                                  child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                      child: Center(
+                                          child: Text(
+                                    'Cel1: ${driver.Cel1}',
+                                  ))),
+                                  Expanded(
+                                      child: Center(
+                                          child: Text('Cel2: ${driver.Cel2}'))),
+                                ],
+                              )),
+                              Expanded(
+                                  child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                      child: Center(
+                                          child: Text(
+                                    'Tel1: ${driver.Tel1}',
+                                  ))),
+                                  Expanded(
+                                      child: Center(
+                                          child: Text('Tel2: ${driver.Tel2}'))),
+                                ],
+                              ))
+                            ],
+                          ))),
                 ],
               ),
             ))),
