@@ -10,7 +10,7 @@ class CompactDriver extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color color_by_date =
-        isDateFarEnough(driver.LincExpDt) ? Colors.transparent : Colors.red;
+        isDateFarEnough(driver.LincExpDt) ? Colors.white : Colors.red;
     Widget subtitle_by_date = isDateFarEnough(driver.LincExpDt)
         ? Center()
         : Text('WARNING! your license is about or already EXPIRED!');
@@ -18,8 +18,8 @@ class CompactDriver extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-          border: Border.all(color: Colors.black),
-          borderRadius: BorderRadius.circular(2)),
+          border: Border.all(color: Colors.grey.shade200, width: 2),
+          borderRadius: BorderRadius.circular(5)),
       child: ListTile(
         contentPadding: EdgeInsets.all(2),
         tileColor: color_by_date,

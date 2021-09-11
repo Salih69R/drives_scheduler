@@ -107,6 +107,7 @@ class _HomeState extends State<Home>
         Scaffold(body: const Center(child: CircularProgressIndicator()));
 
     return Scaffold(
+        backgroundColor: Colors.grey.shade200,
         appBar: AppBar(
           title: Center(child: Text('Home')),
           automaticallyImplyLeading: false,
