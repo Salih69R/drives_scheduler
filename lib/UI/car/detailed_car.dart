@@ -111,6 +111,7 @@ class _DetailedCarState extends State<DetailedCar>
                                       Icon(Icons.perm_data_setting),
                                       Text(
                                         'פרטים',
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
@@ -129,6 +130,8 @@ class _DetailedCarState extends State<DetailedCar>
                                                   child: Center(
                                                     child: Text(
                                                         'קוד: ${_carRecords.car.VehCode}',
+                                                        textAlign:
+                                                            TextAlign.center,
                                                         style: TextStyle(
                                                             fontWeight:
                                                                 FontWeight
@@ -139,7 +142,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                 margin: EdgeInsets.all(6),
                                                 child: Center(
                                                     child: Text(
-                                                        'מספר: ${_carRecords.car.VehNumber}'))),
+                                                        'מספר: ${_carRecords.car.VehNumber}',
+                                                        textAlign:
+                                                            TextAlign.center))),
                                           )
                                         ],
                                       )),
@@ -155,14 +160,18 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'VStatus: ${_carRecords.car.VStatus}'))),
+                                                          'סטטוס: ${_carRecords.car.VStatus != null ? _carRecords.car.VStatus : ''}',
+                                                          textAlign: TextAlign
+                                                              .center))),
                                             ),
                                             Expanded(
                                                 child: Card(
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                         child: Text(
-                                                            'VLockCode: ${_carRecords.car.VLockCode}'))))
+                                                            'קוד נעילה: ${_carRecords.car.VLockCode}',
+                                                            textAlign: TextAlign
+                                                                .center))))
                                           ])),
                                 ],
                               )),
@@ -195,14 +204,18 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'ק"מ לטיימינג הבא: ${_carRecords.car.KilmtrTimng}'))),
+                                                          'ק"מ לטיימינג הבא: ${_carRecords.car.KilmtrTimng}',
+                                                          textAlign: TextAlign
+                                                              .center))),
                                             ),
                                             Expanded(
                                               child: Card(
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'קילומטר: ${_carRecords.car.Kilometer}'))),
+                                                          'קילומטר: ${_carRecords.car.Kilometer}',
+                                                          textAlign: TextAlign
+                                                              .center))),
                                             )
                                           ])),
                                   Flexible(
@@ -217,14 +230,18 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'הטיפול הבא: ${_carRecords.car.VKiloMtr}'))),
+                                                          'הטיפול הבא: ${_carRecords.car.VKiloMtr}',
+                                                          textAlign: TextAlign
+                                                              .center))),
                                             ),
                                             Expanded(
                                               child: Card(
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'טיפול אחרון: ${_carRecords.car.Treatment}'))),
+                                                          'טיפול אחרון: ${_carRecords.car.Treatment}',
+                                                          textAlign: TextAlign
+                                                              .center))),
                                             )
                                           ])),
                                 ],
@@ -264,8 +281,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                                           .car
                                                                           .ActivatDate)
                                                                   ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                                  : Colors.red),
+                                                          textAlign:
+                                                              TextAlign.center),
                                                     ))),
                                             Expanded(
                                                 child: Card(
@@ -279,8 +297,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                                           .car
                                                                           .AdminDate)
                                                                   ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                                  : Colors.red),
+                                                          textAlign:
+                                                              TextAlign.center),
                                                     )))
                                           ])),
                                   Flexible(
@@ -302,8 +321,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                                           .car
                                                                           .BrakesDate)
                                                                   ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                                  : Colors.red),
+                                                          textAlign:
+                                                              TextAlign.center),
                                                     ))),
                                             Expanded(
                                                 child: Card(
@@ -317,8 +337,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                                           .car
                                                                           .VInsuDate)
                                                                   ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                                  : Colors.red),
+                                                          textAlign:
+                                                              TextAlign.center),
                                                     )))
                                           ])),
                                   Flexible(
@@ -333,15 +354,17 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'תאריך הטסט הבא: ${_carRecords.car.VTestDate}',
-                                                          style: TextStyle(
-                                                              color: isDateFarEnough(
-                                                                      _carRecords
-                                                                          .car
-                                                                          .VTestDate)
-                                                                  ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                        'תאריך הטסט הבא: ${_carRecords.car.VTestDate}',
+                                                        style: TextStyle(
+                                                            color: isDateFarEnough(
+                                                                    _carRecords
+                                                                        .car
+                                                                        .VTestDate)
+                                                                ? Colors.green
+                                                                : Colors.red),
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                      ),
                                                     ))),
                                             Expanded(
                                                 child: Card(
@@ -355,8 +378,9 @@ class _DetailedCarState extends State<DetailedCar>
                                                                           .car
                                                                           .ActivatDate)
                                                                   ? Colors.green
-                                                                  : Colors
-                                                                      .red)),
+                                                                  : Colors.red),
+                                                          textAlign:
+                                                              TextAlign.center),
                                                     ))),
                                           ])),
                                 ],
