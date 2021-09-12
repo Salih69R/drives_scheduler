@@ -6,6 +6,10 @@ class DetailedDriver extends StatelessWidget {
   const DetailedDriver({Key? key, required this.driver}) : super(key: key);
   final Driver driver;
 
+  String _unNullStr(String? str) {
+    return str == null || str == 'null' || str == 'nill' ? '' : str;
+  }
+
   @override
   Widget build(BuildContext context) {
     Widget divider = const Divider(
@@ -21,14 +25,14 @@ class DetailedDriver extends StatelessWidget {
             margin: EdgeInsets.all(6),
             child: Center(
                 child: Text(
-              'קוד נהג ${driver.DrvCode}',
+              'קוד נהג: ${driver.DrvCode}',
               style: TextStyle(fontWeight: FontWeight.bold),
             ))));
     Widget card_name = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
-                child: Text('שם נהג ${driver.DrvFulNam}',
+                child: Text('שם נהג: ${driver.DrvFulNam}',
                     style: TextStyle(fontWeight: FontWeight.bold)))));
     Widget card_licType = Expanded(
         child: Card(
@@ -40,7 +44,8 @@ class DetailedDriver extends StatelessWidget {
     Widget card_licNum = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('מספר רשיון: ${driver.LinchNum}'))));
+            child: Center(
+                child: Text('מספר רשיון: ${_unNullStr(driver.LinchNum)}'))));
 
     Widget card_licExp = Expanded(
         child: Card(
@@ -112,7 +117,7 @@ class DetailedDriver extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(Icons.perm_data_setting),
+                Icon(Icons.document_scanner),
                 Text(
                   'רשיון',
                   style: TextStyle(fontWeight: FontWeight.bold),
@@ -138,7 +143,7 @@ class DetailedDriver extends StatelessWidget {
           children: [
             Row(
               children: [
-                Icon(Icons.perm_data_setting),
+                Icon(Icons.phone_in_talk_rounded),
                 Text(
                   'צור קשר',
                   style: TextStyle(fontWeight: FontWeight.bold),
