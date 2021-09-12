@@ -47,6 +47,10 @@ class _DetailedCarState extends State<DetailedCar>
     super.initState();
   }
 
+  String _unNullStr(String? str) {
+    return str == null || str == 'null' || str == 'nill' ? '' : str;
+  }
+
   @override
   Widget build(BuildContext context) {
     //load
@@ -129,7 +133,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                     child: Text(
-                                                        'קוד: ${_carRecords.car.VehCode}',
+                                                        'קוד: ${_unNullStr(_carRecords.car.VehCode)}',
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: TextStyle(
@@ -142,7 +146,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                 margin: EdgeInsets.all(6),
                                                 child: Center(
                                                     child: Text(
-                                                        'מספר: ${_carRecords.car.VehNumber}',
+                                                        'מספר: ${_unNullStr(_carRecords.car.VehNumber)}',
                                                         textAlign:
                                                             TextAlign.center))),
                                           )
@@ -160,7 +164,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'סטטוס: ${_carRecords.car.VStatus != null ? _carRecords.car.VStatus : ''}',
+                                                          'סטטוס: ${_unNullStr(_carRecords.car.VStatus)}',
                                                           textAlign: TextAlign
                                                               .center))),
                                             ),
@@ -169,7 +173,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                         child: Text(
-                                                            'קוד נעילה: ${_carRecords.car.VLockCode}',
+                                                            'קוד נעילה: ${_unNullStr(_carRecords.car.VLockCode)}',
                                                             textAlign: TextAlign
                                                                 .center))))
                                           ])),
@@ -204,7 +208,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'ק"מ לטיימינג הבא: ${_carRecords.car.KilmtrTimng}',
+                                                          'ק"מ לטיימינג הבא: ${_unNullStr(_carRecords.car.KilmtrTimng)}',
                                                           textAlign: TextAlign
                                                               .center))),
                                             ),
@@ -213,7 +217,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'קילומטר: ${_carRecords.car.Kilometer}',
+                                                          'קילומטר: ${_unNullStr(_carRecords.car.Kilometer)}',
                                                           textAlign: TextAlign
                                                               .center))),
                                             )
@@ -230,7 +234,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'הטיפול הבא: ${_carRecords.car.VKiloMtr}',
+                                                          'הטיפול הבא: ${_unNullStr(_carRecords.car.VKiloMtr)}',
                                                           textAlign: TextAlign
                                                               .center))),
                                             ),
@@ -239,7 +243,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                   margin: EdgeInsets.all(6),
                                                   child: Center(
                                                       child: Text(
-                                                          'טיפול אחרון: ${_carRecords.car.Treatment}',
+                                                          'טיפול אחרון: ${_unNullStr(_carRecords.car.Treatment)}',
                                                           textAlign: TextAlign
                                                               .center))),
                                             )
@@ -274,7 +278,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'אישור הפעלה: ${_carRecords.car.ActivatDate}',
+                                                          'אישור הפעלה: ${_unNullStr(_carRecords.car.ActivatDate)}',
                                                           style: TextStyle(
                                                               color: isDateFarEnough(
                                                                       _carRecords
@@ -290,7 +294,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'תאריך מנהלה: ${_carRecords.car.AdminDate}',
+                                                          'תאריך מנהלה: ${_unNullStr(_carRecords.car.AdminDate)}',
                                                           style: TextStyle(
                                                               color: isDateFarEnough(
                                                                       _carRecords
@@ -314,7 +318,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'אישור בלמים: ${_carRecords.car.BrakesDate}',
+                                                          'אישור בלמים: ${_unNullStr(_carRecords.car.BrakesDate)}',
                                                           style: TextStyle(
                                                               color: isDateFarEnough(
                                                                       _carRecords
@@ -330,7 +334,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'תאריך פקיעת הביטוח: ${_carRecords.car.VInsuDate}',
+                                                          'תאריך פקיעת הביטוח: ${_unNullStr(_carRecords.car.VInsuDate)}',
                                                           style: TextStyle(
                                                               color: isDateFarEnough(
                                                                       _carRecords
@@ -354,7 +358,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                        'תאריך הטסט הבא: ${_carRecords.car.VTestDate}',
+                                                        'תאריך הטסט הבא: ${_unNullStr(_carRecords.car.VTestDate)}',
                                                         style: TextStyle(
                                                             color: isDateFarEnough(
                                                                     _carRecords
@@ -371,7 +375,7 @@ class _DetailedCarState extends State<DetailedCar>
                                                     margin: EdgeInsets.all(6),
                                                     child: Center(
                                                       child: Text(
-                                                          'בדיקת חורף: ${_carRecords.car.WinterDate}',
+                                                          'בדיקת חורף: ${_unNullStr(_carRecords.car.WinterDate)}',
                                                           style: TextStyle(
                                                               color: isDateFarEnough(
                                                                       _carRecords
