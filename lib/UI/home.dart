@@ -68,7 +68,7 @@ class _HomeState extends State<Home>
         setState(() {
           loading_drivers = false;
           for (int i = 0; i < response.data.length; ++i) {
-            print('$i\n${response.data[i]}');
+            // print('$i\n${response.data[i]}');
             _drivers.add(Driver.fromJson(response.data[i]));
           }
         });

@@ -15,7 +15,8 @@ class CompactCar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int un_valid_dates = carCountUnValidDates(car);
-    Color color_by_date = un_valid_dates == 0 ? Colors.white : Colors.red;
+    Color color_by_date =
+        un_valid_dates == 0 ? Colors.white : Colors.redAccent.shade100;
     Widget subtitle_by_date = un_valid_dates == 0
         ? Center()
         : Text('אזהרה! יש $un_valid_dates סעיפיף שצריך לעדכן');

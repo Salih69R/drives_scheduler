@@ -9,11 +9,12 @@ class CompactDriver extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color_by_date =
-        isDateFarEnough(driver.LincExpDt) ? Colors.white : Colors.red;
+    Color color_by_date = isDateFarEnough(driver.LincExpDt)
+        ? Colors.white
+        : Colors.redAccent.shade100;
     Widget subtitle_by_date = isDateFarEnough(driver.LincExpDt)
         ? Center()
-        : Text('אהרה! אתה צריך לעדכן את הרשיון שלך!');
+        : Text('אזהרה! אתה צריך לעדכן את הרשיון שלך!');
 
     return Container(
       margin: const EdgeInsets.all(8),
