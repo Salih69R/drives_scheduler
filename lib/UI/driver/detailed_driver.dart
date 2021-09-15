@@ -24,20 +24,22 @@ class DetailedDriver extends StatelessWidget {
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
-                child: Text(
-              'קוד נהג: ${driver.DrvCode}',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ))));
+                child: Text('קוד נהג: ${driver.DrvCode}',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center))));
     Widget card_name = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
                 child: Text('שם נהג: ${driver.DrvFulNam}',
-                    style: TextStyle(fontWeight: FontWeight.bold)))));
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center))));
     Widget card_licType = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('סוג רשיון: ${driver.LicnType}'))));
+            child: Center(
+                child: Text('סוג רשיון: ${driver.LicnType}',
+                    textAlign: TextAlign.center))));
 
     //TODO: since licnhNum is always null in the json...
     // should I not show it at all
@@ -51,41 +53,44 @@ class DetailedDriver extends StatelessWidget {
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
-                child: Text(
-              'רשיון תקף עד: ${driver.LincExpDt}',
-              style: TextStyle(
-                  color: isDateFarEnough(driver.LincExpDt)
-                      ? Colors.green
-                      : Colors.red),
-            ))));
+                child: Text('רשיון תקף עד: ${driver.LincExpDt}',
+                    style: TextStyle(
+                        color: isDateFarEnough(driver.LincExpDt)
+                            ? Colors.green
+                            : Colors.red),
+                    textAlign: TextAlign.center))));
 
     Widget card_licYear = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('שנת רשיון: ${driver.LicnYear}'))));
+            child: Center(
+                child: Text('שנת רשיון: ${driver.LicnYear}',
+                    textAlign: TextAlign.center))));
 
     Widget card_cel1 = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
-                child: Text(
-              'נייד 1: ${driver.Cel1}',
-            ))));
+                child: Text('נייד 1: ${driver.Cel1}',
+                    textAlign: TextAlign.center))));
     Widget card_cel2 = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('נייד 2: ${driver.Cel2}'))));
+            child: Center(
+                child: Text('נייד 2: ${driver.Cel2}',
+                    textAlign: TextAlign.center))));
     Widget card_tel1 = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
             child: Center(
-                child: Text(
-              'נוסף 1: ${driver.Tel1}',
-            ))));
+                child: Text('נוסף 1: ${driver.Tel1}',
+                    textAlign: TextAlign.center))));
     Widget card_tel2 = Expanded(
         child: Card(
             margin: EdgeInsets.all(6),
-            child: Center(child: Text('נוסף 2: ${driver.Tel2}'))));
+            child: Center(
+                child: Text('נוסף 2: ${driver.Tel2}',
+                    textAlign: TextAlign.center))));
 
     Widget row1_details = Flexible(
         //row1
